@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animated Timeline Scroll</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .timeline {
+      position: relative;
+      border-left: 4px solid #000;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      height: 100%;
+    }
+
+    .dot {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: black;
+      border-radius: 50%;
+      z-index: 50;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <div class="dot" id="dot"></div>
+
+  <div class="timeline"></div>
+
+  <div class="space-y-40 py-20">
+    <section class="max-w-4xl mx-auto px-4">
+      <div class="flex items-center space-x-6">
+        <div class="text-4xl text-cyan-500 font-bold">2018</div>
+        <div>
+          <h2 class="text-xl font-bold text-cyan-500">Web Development</h2>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-4">
+      <div class="flex items-center space-x-6">
+        <div class="text-4xl text-orange-500 font-bold">2017</div>
+        <div>
+          <h2 class="text-xl font-bold text-orange-500">JavaScript</h2>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-4">
+      <div class="flex items-center space-x-6">
+        <div class="text-4xl text-green-500 font-bold">2016</div>
+        <div>
+          <h2 class="text-xl font-bold text-green-500">Web Designing</h2>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-4">
+      <div class="flex items-center space-x-6">
+        <div class="text-4xl text-yellow-500 font-bold">2015</div>
+        <div>
+          <h2 class="text-xl font-bold text-yellow-500">Web Development</h2>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const dot = document.getElementById('dot');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const percentScrolled = scrollY / maxScroll;
+      const dotTop = percentScrolled * (document.body.scrollHeight - 100);
+      dot.style.top = `${dotTop}px`;
+    });
+  </script>
+
+</body>
+</html>
